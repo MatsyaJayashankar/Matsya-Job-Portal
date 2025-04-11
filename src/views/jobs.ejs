@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Job Listings</title>
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <style>
+    .swiper-container {
+      width: 100%;
+      padding-top: 50px;
+      padding-bottom: 50px;
+    }
+    .swiper-slide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+    }
+    .card{box-shadow: 7px 7px 7px black;}
+    .card:hover {
+      box-shadow: 0 0 14px wheat;
+    }
+    .card:hover > * {
+      box-shadow: none; /* Remove box-shadow from child elements */
+    }
+    .card-link{text-decoration: none;color: inherit; }
+    i {
+      color: white;
+      opacity: 1;
+      background: none;
+      box-shadow: 0 0 20px black;
+      transition: 0.7s;
+      width: 70vw;
+      letter-spacing:0.2rem;
+    }
+    i:hover {
+      background-color: yellowgreen;
+      color: black;
+      box-shadow: 7px 7px 7px black;
+      transition: 0.3s;
+      letter-spacing: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div style="color: wheat;">_Last visit: <%= lastVisitTime%></div>
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <% jobs.forEach(job => { %>
+        <div class="swiper-slide">
+          <a href="/job/<%= job.id %>" class="card-link">
+          <div class="card  m-3 bg-theme" style="max-width: 18rem">
+            <div class="card-header d-flex flex-column align-items-center justify-content-start p-2">
+              <span style="width: 160px" class="bg-primary bg-opacity-25 text-white border border-success p-1 border-opacity-50 rounded">
+                Actively hiring<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-graph-up-arrow text-success mx-2" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M0 0h1v15h15v1H0V0Zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5Z" />
+                </svg>
+              </span>
+              <h3 style="position: absolute; right: 1rem; font-family:cursive;"><%= job.id %></h3>
+              <h5 class="my-1 fw-bold text-warning">
+                <%= job.company_name %>
+              </h5>
+              <div>
+                <span>
+                  <%= job.job_category %>
+                </span>
+                <span class="text-info">
+                  <%= job.job_designation %>
+                </span>
+              </div>
+            </div>
+            <div class="card-body d-flex align-items-center justify-content-center flex-column">
+              <p class="fw-bold">
+                <i class="bi bi-geo-alt-fill"></i>
+                <%= job.job_location %>
+              </p>
+              <p class="fw-bold">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-rupee" viewBox="0 0 16 16">
+                  <path d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4v1.06Z" />
+                </svg>₹<%= job.salary %>
+              </p>
+              <div class="skills p-1">
+                <% job.skills_required.forEach(skill => { %>
+                  <button class="btn btn-sm btn-outline-info">
+                    <%= skill %>
+                  </button>
+                <% }) %>
+              </div>
+              <a href="/job/<%= job.id %>" class="btn btn-sm btn-outline-success my-2">
+                View details
+              </a>
+            </div>
+          </div>
+        </a>
+        </div>
+      <% }) %>
+    </div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+    <!-- Add Navigation -->
+    <div class="card-body d-flex align-items-center justify-content-center flex-column">
+      <a href="/post-job" class="btn btn-sm my-2">
+        <i class="fa fa-plus" aria-hidden="true" style="font-size: 3.5vw; opacity: 0.8;; font-family:Poppins">
+          <span >post a new job</span>
+        </i>
+      </a>
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script>
+    var swiper = new Swiper('.swiper-container', {
+      slidesPerView: 3,
+      spaceBetween: 30,
+      loop: true,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+  </script>
+</body>
+</html>

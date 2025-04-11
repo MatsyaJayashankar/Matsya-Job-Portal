@@ -1,0 +1,108 @@
+<div>
+  <div class="container p-3 mx-auto w-50 form-box my-5 rounded-md">
+    <h2 style="color: #181642" class="text-center mb-3">Login</h2>
+    <form action="/login" method="post" class="p-2">
+      <div class="mb-3">
+        <div class="input-group">
+          <span class="input-group-text">Email</span>
+          <input required name="email" type="email" aria-label="email" class="form-control"
+            placeholder="enter your email" />
+        </div>
+      </div>
+      <div class="mb-3">
+        <div class="input-group">
+          <span class="input-group-text">Password</span>
+          <input required name="password" type="password" aria-label="password" class="form-control"
+            placeholder="enter your password" />
+        </div>
+      </div>
+      <button type="submit" class="btn btn-md mt-2 lbtn">Login</button>
+      <%if(errorMessage){ %>
+        <button
+            data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop"
+            class="btn btn-md mt-2 lbtn"
+          >
+           Register
+          </button>
+        <div class="alert alert-danger" role="alert">
+          <%= errorMessage %>
+        </div>
+         <!-- Modal for registeration -->
+  <div
+  class="modal fade"
+  id="staticBackdrop"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title bold" id="staticBackdropLabel">
+          Experience easily!
+        </h3>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form action="/register2" method="post" class="p-2">
+          <div class="mb-3">
+            <div class="input-group">
+              <span class="input-group-text">Name</span>
+              <input
+                required
+                name="name"
+                type="text"
+                aria-label="name"
+                class="form-control"
+                placeholder="enter your name"
+              />
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <div class="input-group">
+              <span class="input-group-text">Email</span>
+              <input
+                required
+                name="email"
+                type="email"
+                aria-label="email"
+                class="form-control"
+                placeholder="enter your email"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <div class="input-group">
+              <span class="input-group-text">Password</span>
+              <input
+                required
+                name="password"
+                type="password"
+                aria-label="password"
+                class="form-control"
+                placeholder="enter your password"
+              />
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-md mt-2 lbtn">Register</button>
+        </form>
+      </div>
+
+      
+
+<!-- Modal for registeration -->
+        <%}%>
+    </form>
+  </div>
+</div>
+

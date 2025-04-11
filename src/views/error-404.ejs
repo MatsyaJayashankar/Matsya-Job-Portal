@@ -1,0 +1,48 @@
+
+<div class="bg">
+    <style>
+        .bg {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Orbitron', sans-serif;
+            background-image: url('https://wallpapercave.com/wp/wp6480154.jpg');
+            background-size: cover;
+            color: #00ff00;
+        }
+        .error {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .error h1 {
+            font-size: 5em;
+            animation: glitch 0.5s infinite alternate;
+            opacity: 0.5;
+        }
+        .error p {
+            font-size: 1.5em;
+        }
+        @keyframes glitch {
+            0% { text-shadow: 0.05em 0 #000, -0.05em 0 #000; }
+            33% { text-shadow: 0.05em 0 #000, -0.05em 0 #000; }
+            66% { text-shadow: 0.1em 0 #000, -0.1em 0 #000; }
+            100% { text-shadow: 0.15em 0 #000, -0.15em 0 #000; }
+        }
+    </style>
+    <div class="error">
+        <h1>404</h1>
+        <h2>Access Denied</h2>
+        <h3>Login as recruiter</h3>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const errorElement = document.querySelector('.error');
+            errorElement.style.animationPlayState = 'running';
+        });
+    </script>
+</div>
+
